@@ -135,17 +135,10 @@
   <div class="card">
     <h1>Perfil Sensorial Escolar</h1>
     <p class="muted">
-      Responda conforme ocorre com você. A escala é:
-      <b>Quase nunca</b>, <b>Raramente</b>, <b>Ocasionalmente</b>, <b>Frequentemente</b>, <b>Quase sempre</b>.
+      <b>As respostas serão enviadas diretamente para a profissioanal responsável</b>  
     </p>
 
-    <div class="legend">
-      <span class="pill">1 = Quase nunca</span>
-      <span class="pill">2 = Raramente</span>
-      <span class="pill">3 = Ocasionalmente</span>
-      <span class="pill">4 = Frequentemente</span>
-      <span class="pill">5 = Quase sempre</span>
-    </div>
+   
 
     <div id="pacInfo" class="grid-info" style="display:none;"></div>
 
@@ -316,7 +309,8 @@ const RESPONSE_CHOICES = [
   {v:2, l:'Raramente'},
   {v:3, l:'Ocasionalmente'},
   {v:4, l:'Frequentemente'},
-  {v:5, l:'Quase sempre'}
+  {v:5, l:'Quase sempre'},
+  {v:0, l: 'Não se aplica'}
 ];
 
 /* ===== RENDER ===== */
@@ -438,7 +432,8 @@ function renderPatientInfo(){
   const g = $("#pacInfo"); g.innerHTML="";
   const info = [
     ["Nome", patient.nome || "-"],
-    ["WhatsApp", patient.whatsapp || "-"]
+ 
+     ["Nascimento",fmtDateISO(patient.data_nascimento)]
   ];
   for(const [k,v] of info){
     const div = document.createElement("div");
@@ -679,4 +674,3 @@ $("#form").addEventListener("submit", async (e)=>{
 </script>
 </body>
 </html>
-
